@@ -1,24 +1,4 @@
-## 1. HTTP X-Forwarded-For 헤더에 대해 알아보자
-<br />
-
-클라이언트의 ip 주소를 알고 싶을 때 사용될 수 있다.
-
-```
-  X-Forwarded-For: client, proxy1, proxy2 
-```
-
-프록시를 거칠 때마다 뒤에 [, ] (콤마 스페이스)를 추가될 수 있다. => 맨 오른쪽 값이 클라이언트의 ip
-
-
-<br />
-
----
-
-<br />
-
-
-## 2. [삽질 후기] github actions 사용할 때 이전 태그 정보 못 불러 오는 문제
-<br />
+# github actions 사용할 때 이전 태그 정보 못 불러 오는 문제
 
 ```
   - uses: actions/checkout@v2
