@@ -1,0 +1,49 @@
+Q1 : 아래 코드는 100번을 실행해도 실행결과가 똑같습니다.
+```
+setImmediate(() => console.log('setImmediate'));
+Promise.resolve().then(() => console.log('promise'));
+process.nextTick(() => console.log('nextTick'));
+```
+1. 로그는 어떤 순서로 찍힐까요?
+2. 왜 이 순서로 찍히는지 설명해보세요
+
+Q2 : 아래 코드는 실행 결과가 상황에 따라 다를 수 있습니다.
+```
+// timeout_vs_immediate.js
+setTimeout(() => {
+  console.log('timeout');
+}, 0);
+
+setImmediate(() => {
+  console.log('immediate');
+});
+
+$ node timeout_vs_immediate.js
+timeout
+immediate
+
+$ node timeout_vs_immediate.js
+immediate
+timeout
+```
+
+하지만 아래와 같이 실행하면, 항상 결과가 동일합니다.
+```
+// timeout_vs_immediate.js
+const fs = require('fs');
+
+fs.readFile(__filename, () => {
+  setTimeout(() => {
+    console.log('timeout');
+  }, 0);
+  setImmediate(() => {
+    console.log('immediate');
+  });
+});
+```
+
+1. 로그는 어떤 순서로 찍힐까요?
+
+2. 왜 이 순서로 찍히는지 설명해보세요
+
+출처 : https://itchallenger.tistory.com/769
